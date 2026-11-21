@@ -1,0 +1,26 @@
+{
+  "repository": "neoforged/NeoForge",
+  "role": "Reference for original 1.21.1 slot ceiling; no NeoForge API dependency added.",
+  "files": [
+    {
+      "gitBlob": "c2e33eaaa7431703c68805b0ea84e75c71743578",
+      "path": "src/main/java/net/neoforged/neoforge/items/ItemStackHandler.java"
+    },
+    {
+      "gitBlob": "7126367db1bbf1719a146eae1e87b3f4d2740dd4",
+      "path": "catnip/src/main/java/net/createmod/catnip/data/Glob.java"
+    },
+    {
+      "gitBlob": "e7d330c3cf266e5d4bf7d2a28d2f9a9f7f2dec58",
+      "path": "catnip/LICENSE"
+    }
+  ],
+  "commit": "624c929f49920c250166e2a8df7af87f16d220ef",
+  "additionalSources": [
+    {
+      "repository": "Creators-of-Create/Ponder",
+      "commit": "eff36cf1a4a1826178cf85f1b475af761df770ab",
+      "role": "Exact Catnip Glob implementation and MIT license used by Create 6 address and ComputerCraft filtering."
+    }
+  ]
+}

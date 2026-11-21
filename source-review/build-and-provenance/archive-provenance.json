@@ -1,0 +1,12 @@
+{
+  "fabric": {
+    "sha256": "5eddbbcae98441dd7034f1fd68289604626f3917effa307c710eea2d2e0dab8e",
+    "repository": "Fabricators-of-Create/Create",
+    "commit": "4c3fe779d135d592548e4cb09da04d742d2637b7"
+  },
+  "official": {
+    "sha256": "46f5469bfbe0c4391aa8470b8aa6fc6f5ed98492b5301cf0ab80f11fcbcb9552",
+    "repository": "Creators-of-Create/Create",
+    "commit": "ac0c444d9828da3453ae8cc65338e8de063286fb"
+  }
+}

@@ -1,0 +1,1 @@
+$ErrorActionPreference='Stop';$root=Split-Path -Parent $PSScriptRoot;$p=Join-Path $root 'integration-compile.args';$text=[IO.File]::ReadAllText($p);if(-not$text.Contains('-Xmaxerrs')){$text="-Xmaxerrs`r`n1000`r`n"+$text;[IO.File]::WriteAllText($p,$text,[Text.UTF8Encoding]::new($false))};Write-Output 'Compiler diagnostic limit set to 1000.'

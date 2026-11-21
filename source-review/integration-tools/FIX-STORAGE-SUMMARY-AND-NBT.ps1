@@ -1,0 +1,7 @@
+$ErrorActionPreference='Stop';$root=Split-Path -Parent $PSScriptRoot;$mp=Join-Path $root 'port-changes.json';$m=Get-Content $mp -Raw|ConvertFrom-Json
+$targets=@(
+ [pscustomobject]@{rel='content/trains/station/GlobalStation.java';changes=@([pscustomobject]@{from='NbtUtils.readBlockPos(c, "Pos")';to='NbtUtils.readBlockPos(c, "Pos").orElseThrow()'});status='Native Fabric GlobalStation mail persistence adapted to Minecraft 1.21.1 optional NBT position helper.'},
+ [pscustomobject]@{rel='content/logistics/stockTicker/StockTickerBlockEntity.java';changes=@([pscustomobject]@{from='import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;';to="import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;`nimport io.github.fabricators_of_create.porting_lib_ufo.transfer.TransferUtil;"});status='Native Stock Ticker payment tooltip adapted from Fabric storage views to inventory summary stacks.'}
+)
+foreach($t in $targets){$p=Join-Path $root "source/fabric/src/main/java/com/simibubi/create/$($t.rel)";$x=[IO.File]::ReadAllText($p);foreach($c in $t.changes){if(-not$x.Contains($c.from)){throw "Storage/NBT anchor missing in $($t.rel): $($c.from)"};$x=$x.Replace($c.from,$c.to)};[IO.File]::WriteAllText($p,$x,[Text.UTF8Encoding]::new($false));$e=$m.files|Where-Object path -eq $t.rel;$e.changes=@($e.changes)+$t.changes;$e.status=$t.status}
+$m|ConvertTo-Json -Depth 20|Set-Content $mp -Encoding utf8;Write-Output 'Fixed storage summary conversion and optional NBT position.'

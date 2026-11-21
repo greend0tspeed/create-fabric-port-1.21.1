@@ -1,0 +1,9 @@
+{
+  "datafixerupper": {
+    "cachePath": "work/logistics-sandbox/gradle-cache/caches/modules-2/files-2.1/com.mojang/datafixerupper/8.0.16/67d4de6d7f95d89bcf5862995fb854ebaec02a34/datafixerupper-8.0.16.jar",
+    "scope": "Pins this codec dependency only; does not certify all compiler libraries.",
+    "version": "8.0.16",
+    "sha256": "ffc138bc2596c291781b0d5e211ccac51f0f2345f27fc2742f335cedf7e2870d",
+    "runtimePath": "work/logistics-sandbox/preflight-server-0.3.0/libraries/com/mojang/datafixerupper/8.0.16/datafixerupper-8.0.16.jar"
+  }
+}

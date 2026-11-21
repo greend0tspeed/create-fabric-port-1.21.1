@@ -1,0 +1,21 @@
+{
+  "files": [
+    {
+      "sourceRoot": "baseline-reference",
+      "path": "fabric-modules/porting_lib_ufo/src/main/java/io/github/fabricators_of_create/porting_lib_ufo/transfer/item/ItemStackHandler.java",
+      "changes": [
+        {
+          "from": "return getStackInSlot(slot).getMaxStackSize();",
+          "to": "return Item.ABSOLUTE_MAX_STACK_SIZE;"
+        }
+      ],
+      "reason": "Restore upstream NeoForge ItemStackHandler slot ceiling; resource maximum remains enforced by existing getStackLimit. Empty ItemStack max size was limiting every new slot to one item."
+    },
+    {
+      "sourceRoot": "dependency-reference",
+      "path": "catnip/src/main/java/net/createmod/catnip/data/Glob.java",
+      "changes": [],
+      "reason": "Compile the exact pinned Catnip glob parser required by native Create 6 filtering."
+    }
+  ]
+}

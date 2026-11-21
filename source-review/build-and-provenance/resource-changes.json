@@ -1,0 +1,28 @@
+{
+  "files": [
+    {
+      "path": "fabric/src/main/resources/data/create/tags/block/single_block_inventories.json",
+      "sourceRoot": "upstream",
+      "sourcePath": "src/generated/resources/data/create/tags/block/single_block_inventories.json",
+      "changes": []
+    },
+    {
+      "path": "fabric/src/main/resources/data/create/tags/item/table_cloths.json",
+      "sourceRoot": "upstream",
+      "sourcePath": "src/generated/resources/data/create/tags/item/table_cloths.json",
+      "changes": []
+    },
+    {
+      "path": "fabric/src/main/resources/data/create/tags/item/dyed_table_cloths.json",
+      "sourceRoot": "upstream",
+      "sourcePath": "src/generated/resources/data/create/tags/item/dyed_table_cloths.json",
+      "changes": []
+    },
+    {
+      "path": "fabric/src/main/resources/data/create/tags/block/table_cloths.json",
+      "sourceRoot": "upstream",
+      "sourcePath": "src/generated/resources/data/create/tags/block/table_cloths.json",
+      "changes": []
+    }
+  ]
+}

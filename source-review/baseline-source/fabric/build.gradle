@@ -1,0 +1,101 @@
+plugins {
+    id "com.gradleup.shadow"
+}
+
+architectury {
+    platformSetupLoomIde()
+    fabric()
+}
+
+loom {
+    accessWidenerPath = file("src/main/resources/create.accesswidener")
+    mixin {
+        defaultRefmapName.set("create-refmap.json")
+    }
+    mods {
+        register("flywheel") {
+            sourceSet project(":flywheel").sourceSets.main, project(":flywheel")
+        }
+        register("milk") {
+            sourceSet project(":milk").sourceSets.main, project(":milk")
+        }
+        register("porting_lib_ufo") {
+            sourceSet project(":porting_lib_ufo").sourceSets.main, project(":porting_lib_ufo")
+        }
+        register("registrate_fabric") {
+            sourceSet project(":registrate_fabric").sourceSets.main, project(":registrate_fabric")
+        }
+    }
+}
+
+dependencies {
+    modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:$rootProject.fabric_api_version"
+
+    // Architectury API
+    modImplementation "dev.architectury:architectury-fabric:$rootProject.architectury_api_version"
+
+    // Fabric Support Modules (self-contained, bug-free)
+    api project(path: ":flywheel", configuration: "namedElements")
+    api project(path: ":milk", configuration: "namedElements")
+    api project(path: ":porting_lib_ufo", configuration: "namedElements")
+    api project(path: ":registrate_fabric", configuration: "namedElements")
+
+    // Configs & Utilities
+    modImplementation include("fuzs.forgeconfigapiport:forgeconfigapiport-fabric:21.1.3")
+    modImplementation include("com.electronwill.night-config:core:3.8.0")
+    modImplementation include("com.electronwill.night-config:toml:3.8.0")
+    compileOnly "com.google.code.findbugs:jsr305:3.0.2"
+
+    // Optional compat and recipe viewers
+    modCompileOnly("maven.modrinth:jei:19.5.0.37") { transitive = false }
+    modCompileOnly "com.terraformersmc:modmenu:11.0.1"
+    modCompileOnly "maven.modrinth:sodium:mc1.21-0.6.0-beta.1-fabric"
+    modCompileOnly "maven.modrinth:indium:1.0.35+mc1.21"
+    modCompileOnly "maven.modrinth:iris:1.8.0-beta.3+1.21-fabric"
+
+    // Optional recipe viewer for dev
+    modLocalRuntime "maven.modrinth:jei:19.5.0.37"
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir("src/generated/resources")
+            exclude(".cache/**")
+        }
+    }
+}
+
+processResources {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    exclude("assets/create/models/**")
+    exclude("assets/create/textures/**")
+    exclude("assets/create/blockstates/**")
+    exclude("assets/create/sounds/**")
+    exclude("assets/create/sounds.json")
+    exclude("assets/create/lang/**")
+    exclude("assets/create/particles/**")
+    exclude("assets/create/ponder/**")
+    exclude("assets/create/*.png")
+    exclude("data/create/structure/**")
+    exclude("resourcepacks/**")
+}
+
+remapJar {
+    exclude("assets/create/models/**")
+    exclude("assets/create/textures/**")
+    exclude("assets/create/blockstates/**")
+    exclude("assets/create/sounds/**")
+    exclude("assets/create/sounds.json")
+    exclude("assets/create/lang/**")
+    exclude("assets/create/particles/**")
+    exclude("assets/create/ponder/**")
+    exclude("assets/create/*.png")
+    exclude("data/create/structure/**")
+    exclude("resourcepacks/**")
+    nestedJars.from project(":flywheel").tasks.named("remapJar")
+    nestedJars.from project(":milk").tasks.named("remapJar")
+    nestedJars.from project(":porting_lib_ufo").tasks.named("remapJar")
+    nestedJars.from project(":registrate_fabric").tasks.named("remapJar")
+}

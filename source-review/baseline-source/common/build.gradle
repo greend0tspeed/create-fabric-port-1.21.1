@@ -1,0 +1,29 @@
+architectury {
+    common("neoforge", "fabric")
+}
+
+loom {
+    accessWidenerPath = file("src/main/resources/create.accesswidener")
+}
+
+dependencies {
+    compileOnly "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
+    // Architectury API
+    modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"
+
+    // Registrate (Common)
+    compileOnly "com.tterrag.registrate:Registrate:$rootProject.registrate_version"
+
+    // Flywheel API (Common)
+    compileOnly "dev.engine-room.flywheel:flywheel-common-mojmap-api-$rootProject.minecraft_version:$rootProject.flywheel_version"
+
+    // Ponder (Common)
+    compileOnly "net.createmod.ponder:ponder-common:$rootProject.ponder_version+mc$rootProject.minecraft_version"
+
+    // Annotations (JSR-305)
+    compileOnly "com.google.code.findbugs:jsr305:3.0.2"
+}
+
+tasks.withType(Jar).configureEach {
+    exclude("com/simibubi/create/Create.class")
+}

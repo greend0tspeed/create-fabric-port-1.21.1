@@ -1,0 +1,11 @@
+$ErrorActionPreference='Stop';$root=Split-Path -Parent $PSScriptRoot;$path=Join-Path $root 'source/fabric/src/main/java/com/simibubi/create/content/logistics/factoryBoard/FactoryPanelBlock.java';$manifestPath=Join-Path $root 'port-changes.json'
+$text=[IO.File]::ReadAllText($path);$nl=if($text.Contains("`r`n")){"`r`n"}else{"`n"};$bad=") {`t`tif (pLevel.isClientSide)";$good=") {${nl}`t`tif (pLevel.isClientSide)";if(-not$text.Contains($bad)){throw 'Factory item-use newline repair anchor missing'};$text=$text.Replace($bad,$good);[IO.File]::WriteAllText($path,$text,[Text.UTF8Encoding]::new($false))
+$manifest=Get-Content $manifestPath -Raw|ConvertFrom-Json;$entry=$manifest.files|Where-Object path -eq 'content/logistics/factoryBoard/FactoryPanelBlock.java';$all=@($entry.changes);if($all.Count -lt 13){throw 'Factory provenance tail missing'};$header=$all[$all.Count-5];$break=$all[$all.Count-2];$close=$all[$all.Count-1];$header.to=$header.to+$(if($header.to.EndsWith("`r")){"`n"}else{$nl});$prefix=@();if($all.Count-13 -gt 0){$prefix=$all[0..($all.Count-14)]}
+$scoped=@(
+ [pscustomobject]@{from="if (pLevel.isClientSide)${nl}`t`t`treturn InteractionResult.SUCCESS;";to="if (pLevel.isClientSide)${nl}`t`t`treturn ItemInteractionResult.SUCCESS;"},
+ [pscustomobject]@{from="if (!AllBlocks.FACTORY_GAUGE.isIn(item))${nl}`t`t`treturn InteractionResult.SUCCESS;";to="if (!AllBlocks.FACTORY_GAUGE.isIn(item))${nl}`t`t`treturn ItemInteractionResult.SUCCESS;"},
+ [pscustomobject]@{from="if (location == null)${nl}`t`t`treturn InteractionResult.SUCCESS;";to="if (location == null)${nl}`t`t`treturn ItemInteractionResult.SUCCESS;"},
+ [pscustomobject]@{from="`t`t`treturn InteractionResult.FAIL;${nl}`t`t}";to="`t`t`treturn ItemInteractionResult.FAIL;${nl}`t`t}"},
+ [pscustomobject]@{from="`t`treturn InteractionResult.SUCCESS;${nl}`t}${nl}${nl}`t@Override${nl}`tpublic boolean onDestroyedByPlayer";to="`t`treturn ItemInteractionResult.SUCCESS;${nl}`t}${nl}${nl}`t@Override${nl}`tpublic boolean onDestroyedByPlayer"}
+)
+$entry.changes=@($prefix)+$all[($all.Count-13)..($all.Count-6)]+$header+$scoped+$break+$close;$manifest|ConvertTo-Json -Depth 20|Set-Content $manifestPath -Encoding utf8;Write-Output 'Repaired Factory Panel block provenance with scoped interaction changes.'

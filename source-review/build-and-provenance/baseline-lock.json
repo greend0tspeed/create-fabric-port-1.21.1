@@ -1,0 +1,13 @@
+{
+  "sourceCommit": "ee22ed23ccbe034ce6644a29a68f5f5e7a7a4e09",
+  "sourceArchiveSha256": "1a9864e59f239d79808231743f56e0d94e5f22947a3e19af00c1747bae1cd353",
+  "baseBinarySha256": "ac2c5c18add02941f71f6917604e24ae857f630d288814acf6f8de17b0ba2192",
+  "compatibilitySourceHashes": {
+    "fabric/src/main/resources/data/create/tags/item/chain_rideable.json": "e5c158d6687abd63e79164ab5f25c936606d0772531725da12158a08816df512",
+    "fabric-modules/porting_lib_ufo/src/main/java/io/github/fabricators_of_create/porting_lib_ufo/entity/mixin/common/EntityMixin.java": "a4260ad1d60ea2e1c47448337504efd9a100824270d3380bb49799ebf2293107",
+    "fabric-modules/porting_lib_ufo/src/main/java/io/github/fabricators_of_create/porting_lib_ufo/models/geometry/mixin/common/TransformationMixin.java": "91c34c120341b66c0d7e65fd04480d60e83623e9b9cee8029115dbeb073e63ca"
+  },
+  "officialCreateCommit": "ac0c444d9828da3453ae8cc65338e8de063286fb",
+  "nativeLogisticsStatus": "Source port in progress; native Packager/Frogport integration is not yet runnable. No sandbox implementations included.",
+  "validation": "Compatibility source hashes verified; three native source files compile against the published Fabric baseline. Baseline profile archives preserve original dependencies and other files. Complete source build and new native gameplay remain unverified."
+}

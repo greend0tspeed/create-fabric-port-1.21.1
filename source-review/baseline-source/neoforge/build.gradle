@@ -1,0 +1,120 @@
+plugins {
+    id "com.gradleup.shadow"
+}
+
+architectury {
+    platformSetupLoomIde()
+    neoForge()
+}
+
+configurations {
+    common {
+        canBeResolved = true
+        canBeConsumed = false
+    }
+    compileClasspath.extendsFrom common
+
+    shadowBundle {
+        canBeResolved = true
+        canBeConsumed = false
+    }
+}
+
+dependencies {
+    neoForge "net.neoforged:neoforge:$rootProject.neo_version"
+    compileOnly "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
+
+    // Architectury API
+    modImplementation "dev.architectury:architectury-neoforge:$rootProject.architectury_api_version"
+
+    common(project(path: ":common", configuration: "namedElements")) { transitive false }
+    shadowBundle project(path: ":common", configuration: "transformProductionNeoForge")
+
+    // Registrate
+    implementation "com.tterrag.registrate:Registrate:$rootProject.registrate_version"
+
+    // Flywheel API
+    compileOnly "dev.engine-room.flywheel:flywheel-neoforge-api-$rootProject.minecraft_version:$rootProject.flywheel_version"
+    runtimeOnly "dev.engine-room.flywheel:flywheel-neoforge-$rootProject.minecraft_version:$rootProject.flywheel_version"
+
+    // Ponder
+    implementation "net.createmod.ponder:ponder-neoforge:$rootProject.ponder_version+mc$rootProject.minecraft_version"
+
+    // Optional Integrations for compile classpath (directly from upstream Create)
+    compileOnly "top.theillusivec4.curios:curios-neoforge:$rootProject.curios_version+$rootProject.minecraft_version:api"
+    compileOnly "mezz.jei:jei-$rootProject.minecraft_version-neoforge:$rootProject.jei_version"
+    compileOnly "cc.tweaked:cc-tweaked-$rootProject.minecraft_version-core-api:$rootProject.cc_tweaked_version"
+    compileOnly "cc.tweaked:cc-tweaked-$rootProject.minecraft_version-forge-api:$rootProject.cc_tweaked_version"
+    compileOnly "maven.modrinth:sodium:mc$rootProject.minecraft_version-$rootProject.sodium_version-neoforge"
+    compileOnly "maven.modrinth:farmers-delight:$rootProject.farmers_delight_version"
+
+    // Map compat
+    compileOnly "dev.ftb.mods:ftb-chunks-neoforge:2101.1.1"
+    compileOnly "dev.ftb.mods:ftb-library-neoforge:2101.1.3"
+    compileOnly "info.journeymap:journeymap-api-neoforge:2.0.0-1.21.1-20260205.200232-15"
+    compileOnly "maven.modrinth:journeymap:1.21.1-6.0.0-beta.54+neoforge"
+    compileOnly "xaero.lib:xaerolib-neoforge-1.21:1.0.42"
+    compileOnly "curse.maven:xaeros-world-map-317780:7401095"
+
+    // Addons
+    modLocalRuntime "maven.modrinth:create-cyber-goggles:8S36YIoy"
+}
+
+processResources {
+    def replaceProperties = [
+        minecraft_version: rootProject.minecraft_version,
+        mod_id: rootProject.mod_id,
+        mod_name: rootProject.mod_name,
+        mod_version: rootProject.mod_version,
+        mod_author: "simibubi",
+        mod_description: "Technology that empowers the player.",
+        mod_license: "MIT",
+        neo_version: rootProject.neo_version,
+        flywheel_version_range: "[1.0.0,2.0)",
+        ponder_version: rootProject.ponder_version
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching("META-INF/neoforge.mods.toml") {
+        expand replaceProperties
+    }
+
+    from project(":common").sourceSets.main.resources
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+shadowJar {
+    configurations = [project.configurations.shadowBundle]
+    archiveClassifier = "dev-shadow"
+}
+
+remapJar {
+    inputFile.set shadowJar.archiveFile
+}
+
+tasks.named("classes") {
+    dependsOn(":common:classes")
+    doLast {
+        def destClasses = sourceSets.main.java.classesDirectory.get().asFile
+        def neoforgeSrcDir = file("src/main/java")
+        project(":common").sourceSets.main.output.classesDirs.each { srcDir ->
+            if (srcDir.exists()) {
+                srcDir.eachFileRecurse(groovy.io.FileType.FILES) { file ->
+                    def relPath = srcDir.toPath().relativize(file.toPath()).toString()
+                    def javaRelPath = relPath.replaceFirst(/(\$.*)?\.class$/, ".java")
+                    def neoforgeJavaSrc = new File(neoforgeSrcDir, javaRelPath)
+                    if (!neoforgeJavaSrc.exists()) {
+                        def targetFile = new File(destClasses, relPath)
+                        targetFile.parentFile.mkdirs()
+                        java.nio.file.Files.copy(file.toPath(), targetFile.toPath(), java.nio.file.StandardCopyOption.REPLACE_EXISTING)
+                    }
+                }
+            }
+        }
+        copy {
+            from project(":common").sourceSets.main.output.resourcesDir
+            into sourceSets.main.output.resourcesDir
+            duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+        }
+    }
+}

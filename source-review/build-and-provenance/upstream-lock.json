@@ -1,0 +1,237 @@
+{
+  "repository": "https://github.com/Creators-of-Create/Create",
+  "tag": "mc1.21.1-6.0.10",
+  "commit": "ac0c444d9828da3453ae8cc65338e8de063286fb",
+  "files": [
+    {
+      "path": "LICENSE.md",
+      "gitBlob": "09585293b6f48832f0d37e731e19847f9bd1edfe",
+      "bytes": 1411
+    },
+    {
+      "path": "gradle.properties",
+      "gitBlob": "8518139b6661f18d9b8e50d8cb4409a372b02f86",
+      "bytes": 1497
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packager/PackagerBlock.java",
+      "gitBlob": "02d318fd4c3bbc627b5adf7d3cf9a4dd494466b6",
+      "bytes": 8113
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packager/PackagerBlockEntity.java",
+      "gitBlob": "fe44ffd9b318d121fc22efad90ff31b715f696b8",
+      "bytes": 23177
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packager/PackagerItemHandler.java",
+      "gitBlob": "a2b6267f3a6b49709fa138c23f4d1fc161ba5462",
+      "bytes": 1638
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packager/PackagerRenderer.java",
+      "gitBlob": "7d3e9dc9358b7f2de379c3cfe21648a172480ec9",
+      "bytes": 3508
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packagePort/PackagePortBlockEntity.java",
+      "gitBlob": "26df99e9ec6c69380a9414d87593f0e681703e62",
+      "bytes": 6994
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packagePort/PackagePortTarget.java",
+      "gitBlob": "4ceee00a062d24b58ac4b94b112a8dc10ef0e361",
+      "bytes": 9974
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packagePort/PackagePortTargetType.java",
+      "gitBlob": "201af103d2edfeea0f7826b2d06642dc64de76f3",
+      "bytes": 388
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packagePort/PackagePortMenu.java",
+      "gitBlob": "177c2c3c60c857d903b73f3f6791bd6526ea3f4f",
+      "bytes": 6204
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packagePort/PackagePortScreen.java",
+      "gitBlob": "eaa769c403e70d7b45d7e41b3a7c6007b1ab3622",
+      "bytes": 6751
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packagePort/PackagePortItem.java",
+      "gitBlob": "26e4399cde7c19ab414bda0a33395901b084c843",
+      "bytes": 1033
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packagePort/PackagePortAutomationInventoryWrapper.java",
+      "gitBlob": "92deef87171cd5e2ffbcbc2dbf1486f51f5ef04d",
+      "bytes": 1343
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packagePort/PackagePortConfigurationPacket.java",
+      "gitBlob": "115bdf784ff70c881822b9ffaf7b551ae1832a34",
+      "bytes": 1500
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packagePort/PackagePortPlacementPacket.java",
+      "gitBlob": "e62c14f1fe905d0378fa614e9c4cb2a0e572f29e",
+      "bytes": 2377
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packagePort/PackagePortTargetSelectionHandler.java",
+      "gitBlob": "a2b99f438e6352290decba17bbf0dc83df22aeee",
+      "bytes": 6023
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packagePort/AllPackagePortTargetTypes.java",
+      "gitBlob": "00ec349662b5f1c5e6dd3bf4fbfc1985e7c10f04",
+      "bytes": 1128
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packagePort/frogport/FrogportBlock.java",
+      "gitBlob": "4628d642480c0bcd4e0900c2acdd4a88ae043578",
+      "bytes": 3463
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packagePort/frogport/FrogportBlockEntity.java",
+      "gitBlob": "2ca96b76b776bb23f7268e38cc34de98b56f4996",
+      "bytes": 13179
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packagePort/frogport/FrogportRenderer.java",
+      "gitBlob": "7a2c9ce68fd1ad3a295fe0fabdcaa3afa1789dc0",
+      "bytes": 6551
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packagePort/frogport/FrogportVisual.java",
+      "gitBlob": "59d9702fe6e6979a7594ff2d90e6927190375f7c",
+      "bytes": 8169
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/kinetics/chainConveyor/ChainConveyorBlock.java",
+      "gitBlob": "e9fe80d6a6164afbfc8a3679e46863ccf704749f",
+      "bytes": 4838
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/kinetics/chainConveyor/ChainConveyorBlockEntity.java",
+      "gitBlob": "3dd961c2261043718a130a9d29ad2345db28f445",
+      "bytes": 27195
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/kinetics/chainConveyor/ChainConveyorRoutingTable.java",
+      "gitBlob": "8e326e5d61eeb0656dca2d3ce94f95484d5e8d75",
+      "bytes": 3768
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/kinetics/chainConveyor/ChainConveyorInteractionHandler.java",
+      "gitBlob": "1e97912de99c961ea1cc6537493633c388853c7e",
+      "bytes": 6278
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/kinetics/chainConveyor/ChainConveyorPackage.java",
+      "gitBlob": "6d5de63ea6c380a983b7418312e19e4fce9a2bbb",
+      "bytes": 3782
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/kinetics/chainConveyor/ChainConveyorRenderer.java",
+      "gitBlob": "d3faea6d23be7f6f6c6abbe5d6b299e2d82ff7f7",
+      "bytes": 10661
+    },
+    {
+      "bytes": 3377,
+      "gitBlob": "a234c2308b2ea70f7c23082e011824d8f24fa3db",
+      "path": "src/main/java/com/simibubi/create/foundation/utility/TickBasedCache.java"
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/box/PackageItem.java",
+      "gitBlob": "d4b9ebbe24d8df9128172e11899b24bd315558fc"
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packager/InventorySummary.java",
+      "gitBlob": "25440e5b18499d1a3f58595bab17100c0fdd555a"
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packager/PackagingRequest.java",
+      "gitBlob": "cd3ef864b3a9c45ebc1159ea1e424278c527100e"
+    },
+    {
+      "path": "src/generated/resources/data/create/tags/block/single_block_inventories.json",
+      "gitBlob": "a60fc63f768e29575adc320c68b2f80b356bef64"
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packagerLink/RequestPromise.java",
+      "gitBlob": "8ea48e7746edea5dd073f1e129e42ad1a8742fb5"
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packagerLink/RequestPromiseQueue.java",
+      "gitBlob": "747b64d095a2b5c7da808a5426b4d87a967e81d9"
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packagerLink/GlobalLogisticsManager.java",
+      "gitBlob": "2198d16d97dbc84ce19dbb8e3f373fb2ee6d4293"
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packagerLink/LogisticsNetwork.java",
+      "gitBlob": "d3ef4b4ab94cd990f31bc6128f446b8e9a5ac63f"
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packagerLink/LogisticsNetworkSavedData.java",
+      "gitBlob": "db297a04974990dc50f1a89d7ae7af3ad198885e"
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packagerLink/LogisticallyLinkedBlockItem.java",
+      "gitBlob": "f28df05fe6f86cba500b1d3ff1ada9cd9a92f2e0"
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/factoryBoard/FactoryPanelPosition.java",
+      "gitBlob": "225e1e4a575bec44028680d52ca6ef02d8ae7c49"
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/packagerLink/LogisticallyLinkedClientHandler.java",
+      "gitBlob": "7918c6b86d9534737ee0e77b34718c4af70eb9a6"
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/stockTicker/PackageOrder.java",
+      "gitBlob": "93cda9eaf2e72161764fa8a9be0d2c8ad3fa2e26"
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/stockTicker/PackageOrderWithCrafts.java",
+      "gitBlob": "f70d3bae6b68c8624091fa0cb43f183779539a01"
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/redstoneRequester/AutoRequestData.java",
+      "gitBlob": "3482fb74ce0ff4b5f35bd58bbf6a19e59891287d"
+    },
+    {
+      "path": "src/main/java/com/simibubi/create/content/logistics/tableCloth/ShoppingListItem.java",
+      "gitBlob": "6f78d8d4b7d8957f2dc429c7e0d51c21c530997b"
+    },
+    {
+      "gitBlob": "268c392bb173289a8b732a2c5a397fa34f0dfed3",
+      "path": "src/main/java/com/simibubi/create/content/redstone/displayLink/LinkBulbRenderer.java"
+    },
+    {
+      "gitBlob": "83df17651aaa248e0c0c416ce60d0d86f894379e",
+      "path": "src/main/java/com/simibubi/create/content/logistics/filter/PackageFilterMenu.java"
+    },
+    {
+      "gitBlob": "44f25426045f3b08a58d4d7b0079b40127508063",
+      "path": "src/main/java/com/simibubi/create/content/logistics/filter/PackageFilterScreen.java"
+    },
+    {
+      "gitBlob": "20c8f0ada561fd396965e05d3339f8d74f5dd79b",
+      "path": "src/generated/resources/data/create/tags/item/table_cloths.json"
+    },
+    {
+      "gitBlob": "08032250b4c5f00bbd7a0ce9f49614a88e7ec3f6",
+      "path": "src/generated/resources/data/create/tags/item/dyed_table_cloths.json"
+    },
+    {
+      "gitBlob": "20c8f0ada561fd396965e05d3339f8d74f5dd79b",
+      "path": "src/generated/resources/data/create/tags/block/table_cloths.json"
+    }
+  ],
+  "scope": "Official code snapshot for native source port. Not the sandbox implementation.",
+  "assets": "External official 6.0.10 archive; no generated art and no assets included in this snapshot."
+}

@@ -1,0 +1,10 @@
+*.jar
+*.class
+*.mrpack
+.gradle/
+build/
+logs/
+saves/
+crash-reports/
+.env
+.env.*

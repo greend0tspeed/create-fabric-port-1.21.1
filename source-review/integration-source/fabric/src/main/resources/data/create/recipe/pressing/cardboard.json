@@ -1,0 +1,9 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    { "item": "create:pulp" }
+  ],
+  "results": [
+    { "id": "create:cardboard" }
+  ]
+}

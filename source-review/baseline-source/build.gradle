@@ -1,0 +1,98 @@
+plugins {
+    id "architectury-plugin" version "3.4-SNAPSHOT"
+    id "dev.architectury.loom" version "1.11-SNAPSHOT" apply false
+    id "com.gradleup.shadow" version "8.3.6" apply false
+}
+
+architectury {
+    minecraft = rootProject.minecraft_version
+}
+
+allprojects {
+    group = rootProject.maven_group
+    version = rootProject.mod_version + "+" + rootProject.minecraft_version
+}
+
+subprojects {
+    apply plugin: "dev.architectury.loom"
+    apply plugin: "architectury-plugin"
+    apply plugin: "maven-publish"
+
+    base {
+        archivesName = "$rootProject.mod_id-$project.name"
+    }
+
+    repositories {
+        mavenCentral()
+        maven { url = "https://maven.architectury.dev/" }
+        maven { url = "https://maven.fabricmc.net/" }
+        maven { url = "https://maven.neoforged.net/releases" }
+        maven { url = "https://maven.createmod.net" }
+        maven { url = "https://maven.ithundxr.dev/snapshots" }
+        maven { url = "https://maven.parchmentmc.org" }
+        maven { url = "https://maven.blamejared.com" }
+        maven { url = "https://maven.theillusivec4.top/" }
+        maven { url = "https://maven.squiddev.cc" }
+        maven { url = "https://api.modrinth.com/maven" }
+        maven { url = "https://maven.ftb.dev/releases" }
+        maven { url = "https://jm.gserv.me/repository/maven-public" }
+        maven { url = "https://chocolateminecraft.com/maven" }
+        maven { url = "https://www.cursemaven.com" }
+        maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven" } // ForgeConfigAPIPort for Ponder
+        maven { url = "https://mvn.devos.one/snapshots" } // Registrate fabric & Porting Lib
+        maven { url = "https://repo.sleeping.town/" }
+        maven { url = "https://maven.terraformersmc.com/" }
+        maven { url = "https://jitpack.io" }
+    }
+
+    dependencies {
+        minecraft "com.mojang:minecraft:$rootProject.minecraft_version"
+        mappings loom.layered() {
+            officialMojangMappings()
+            parchment("org.parchmentmc.data:parchment-$rootProject.parchment_minecraft_version:$rootProject.parchment_version@zip")
+        }
+    }
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(21)
+        }
+        withSourcesJar()
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = "UTF-8"
+        options.release = 21
+    }
+
+    // Exclude ARR assets so that compiled mod jars contain ZERO copyrighted assets/models/sounds/structures
+    tasks.withType(ProcessResources).configureEach {
+        exclude("assets/create/models/**")
+        exclude("assets/create/textures/**")
+        exclude("assets/create/blockstates/**")
+        exclude("assets/create/sounds/**")
+        exclude("assets/create/sounds.json")
+        exclude("assets/create/lang/**")
+        exclude("assets/create/particles/**")
+        exclude("assets/create/ponder/**")
+        exclude("assets/create/*.png")
+        exclude("data/create/structure/**")
+        exclude("resourcepacks/**")
+        exclude("**/*.bbmodel", "**/*.lnk")
+    }
+
+    tasks.withType(Jar).configureEach {
+        exclude("assets/create/models/**")
+        exclude("assets/create/textures/**")
+        exclude("assets/create/blockstates/**")
+        exclude("assets/create/sounds/**")
+        exclude("assets/create/sounds.json")
+        exclude("assets/create/lang/**")
+        exclude("assets/create/particles/**")
+        exclude("assets/create/ponder/**")
+        exclude("assets/create/*.png")
+        exclude("data/create/structure/**")
+        exclude("resourcepacks/**")
+        exclude("**/*.bbmodel", "**/*.lnk")
+    }
+}

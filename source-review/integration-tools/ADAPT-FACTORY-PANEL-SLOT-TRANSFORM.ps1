@@ -1,0 +1,10 @@
+$ErrorActionPreference='Stop';$root=Split-Path -Parent $PSScriptRoot;$path=Join-Path $root 'source/fabric/src/main/java/com/simibubi/create/content/logistics/factoryBoard/FactoryPanelSlotPositioning.java';$manifestPath=Join-Path $root 'port-changes.json'
+$changes=@(
+ [pscustomobject]@{from='public Vec3 getLocalOffset(LevelAccessor level, BlockPos pos, BlockState state) {';to='public Vec3 getLocalOffset(BlockState state) {'},
+ [pscustomobject]@{from='public boolean testHit(LevelAccessor level, BlockPos pos, BlockState state, Vec3 localHit) {';to='public boolean testHit(BlockState state, Vec3 localHit) {'},
+ [pscustomobject]@{from='Vec3 offset = getLocalOffset(level, pos, state);';to='Vec3 offset = getLocalOffset(state);'},
+ [pscustomobject]@{from='public void rotate(LevelAccessor level, BlockPos pos, BlockState state, PoseStack ms) {';to='public void rotate(BlockState state, PoseStack ms) {'},
+ [pscustomobject]@{from='.rotate(FactoryPanelBlock.getYRot(state) + Mth.PI, Direction.UP)';to='.rotate(Direction.UP, FactoryPanelBlock.getYRot(state) + Mth.PI)'},
+ [pscustomobject]@{from='.rotate(-FactoryPanelBlock.getXRot(state), Direction.EAST)';to='.rotate(Direction.EAST, -FactoryPanelBlock.getXRot(state))'}
+)
+$text=[IO.File]::ReadAllText($path);foreach($c in $changes){if(-not$text.Contains($c.from)){throw "Slot transform anchor missing: $($c.from)"};$text=$text.Replace($c.from,$c.to)};[IO.File]::WriteAllText($path,$text,[Text.UTF8Encoding]::new($false));$manifest=Get-Content $manifestPath -Raw|ConvertFrom-Json;$entry=$manifest.files|Where-Object path -eq 'content/logistics/factoryBoard/FactoryPanelSlotPositioning.java';$entry.changes=@($entry.changes)+$changes;$entry.status='Original Factory Panel slot geometry retained; ValueBoxTransform context removal and Fabric TransformStack direction/angle ordering adapted.';$manifest|ConvertTo-Json -Depth 20|Set-Content $manifestPath -Encoding utf8;Write-Output 'Adapted Factory Panel slot positioning to the baseline ValueBoxTransform API.'

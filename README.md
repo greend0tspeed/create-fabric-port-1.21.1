@@ -12,7 +12,7 @@ Core workflows have undergone extensive private singleplayer and multiplayer tes
 
 ## Publication status
 
-**Release preparation only. No runtime download is provided here.** Reserved-asset permissions, bundled-library notices/source obligations and Modrinth eligibility remain unresolved. This repository of documents does not grant permission to redistribute any upstream asset or binary. See [license overview](LICENSE.md), [third-party notices](THIRD-PARTY-NOTICES.md), and [release checklist](RELEASE-CHECKLIST.md).
+**Release preparation only. No runtime download is provided here.** Reserved-asset permissions, bundled-library notices/source obligations and Modrinth eligibility remain unresolved. This repository does not grant permission to redistribute any upstream asset or binary. See [license overview](LICENSE.md), [third-party notices](THIRD-PARTY-NOTICES.md), and [release checklist](RELEASE-CHECKLIST.md).
 
 ## AI assistance
 
@@ -25,4 +25,4 @@ OpenAI Codex substantially assisted upstream-source adaptation, compatibility co
 - [sanufsoii / Create Reforged](https://github.com/sanufsoiii/create-unofficial), Fabric 1.21.1 baseline.
 - [Ponder contributors](https://github.com/Creators-of-Create/Ponder) and the authors of bundled libraries.
 
-Maintainer identity and a public source/build release remain pending. This document repository is not the complete corresponding source for the private jar. Report this fork's issues to its maintainers rather than upstream developers.
+A source-review snapshot, port adaptations, tests and build/provenance scripts are available under [source-review](source-review/README.md). This is not certified complete corresponding source or a standalone reproducible public build. Report this fork's issues to its maintainers rather than upstream developers.
